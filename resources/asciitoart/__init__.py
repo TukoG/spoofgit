@@ -4,6 +4,7 @@
 
 from __future__ import print_function, unicode_literals
 from optparse import OptionParser
+from pathlib import Path
 from .fonts.list import fonts
 from .version import __version__
 import importlib.resources
@@ -128,11 +129,15 @@ class asciitoartFont(object):
         """
         # Find a plausible lo
         # oking font file.
+        
         data = None
         font_path = None
         for extension in ('tlf', 'flf'):
             fn = '%s.%s' % (font, extension)
-            path = importlib.resources.files('asciitoart.fonts').joinpath(fn)
+            #path = importlib.resources.files('asciitoart.fonts').joinpath(fn)
+            path = Path(__file__).parent / 'fonts' / fn
+
+            
             if path.exists():
                 font_path = path
                 break
