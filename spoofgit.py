@@ -206,6 +206,9 @@ def creds():
 
     while not GITHUB_TOKEN:
         GITHUB_TOKEN = input("Enter your GitHub token: ")
+        if GITHUB_TOKEN == "exit":
+            exit()
+
         if not GITHUB_TOKEN.startswith("ghp_"):
             print("Invalid token!")
             GITHUB_TOKEN = None
@@ -223,7 +226,8 @@ def creds():
 
 def main():
     
-    try:banner = asciitoart.asciitoart_format("Spoof Git",font="ansi_shadow")
+    try:
+        banner = asciitoart.asciitoart_format("Spoof Git",font="ansi_shadow")
     except:banner = ""
     print(f"\n{banner}\n\t\t------ Github Account Spoofing Tool ------\n")
     creds()
